@@ -69,13 +69,16 @@ include '../includes/navbar.php';
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
-                    <select name="category" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <option value="">Select Category</option>
-                        <option value="general">General</option>
-                        <option value="support">Support</option>
-                        <option value="sales">Sales</option>
-                        <option value="billing">Billing</option>
-                    </select>
+                    <select id="category" name="category" 
+                        class="w-full bg-black/50 border border-cyber-purple/30 rounded-lg px-4 py-3 text-white font-tech focus:border-cyber-purple focus:ring-2 focus:ring-cyber-purple/20 focus:outline-none transition-all duration-300 glass-effect" required>
+                  <option value="" disabled selected>Select a category</option>
+                  <option value="development">Web Development</option>
+                  <option value="devops">DevOps / Infrastructure</option>
+                  <option value="qa">Quality Assurance</option>
+                  <option value="support">Technical Support</option>
+                  <option value="security">Security Consultation</option>
+                  <option value="feedback">Product Feedback</option>
+                </select>
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Preferred Contact</label>
