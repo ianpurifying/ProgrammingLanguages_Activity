@@ -72,20 +72,36 @@ include 'includes/navbar.php';
         </div>
     </div>
 
-    <!-- Analytics & Insights Section -->
+    <!-- Analytics & Insights Section with PDF Export -->
     <div class="mb-8">
         <div class="bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden">
             <div class="bg-gradient-to-r from-purple-600 via-purple-700 to-indigo-700 p-6">
-                <h3 class="text-xl font-bold text-white flex items-center">
-                    <div class="p-2 bg-white bg-opacity-20 rounded-lg mr-3">
-                        <i class="fas fa-chart-line text-white"></i>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <div class="p-2 bg-white bg-opacity-20 rounded-lg mr-3">
+                            <i class="fas fa-chart-line text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Analytics & Insights</h3>
+                            <span class="text-purple-200 text-sm font-normal">Real-time data overview</span>
+                        </div>
                     </div>
-                    Analytics & Insights
-                    <span class="ml-3 text-purple-200 text-sm font-normal">Real-time data overview</span>
-                </h3>
+                    
+                    <!-- PDF Export Button -->
+                    <button 
+                        id="exportPdfBtn" 
+                        onclick="exportReportToPDF()" 
+                        class="bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-semibold py-2 px-4 rounded-lg border border-white border-opacity-30 transition-all duration-200 flex items-center space-x-2 hover:scale-105"
+                        title="Export Analytics Report as PDF"
+                    >
+                        <i class="fas fa-download"></i>
+                        <span>Download Report</span>
+                    </button>
+                </div>
             </div>
             
-            <div class="p-8">
+            <!-- Report Content Container for PDF Export -->
+            <div id="reportContent" class="p-8">
                 <!-- Charts Section -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
                     <div class="analytics-card bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300">
@@ -224,5 +240,144 @@ include 'includes/navbar.php';
         </div>
     </div>
 </div>
+
+<!-- PDF Export JavaScript Function -->
+<script>
+async function exportReportToPDF() {
+    const exportBtn = document.getElementById('exportPdfBtn');
+    const reportContent = document.getElementById('reportContent');
+    
+    if (!reportContent) {
+        console.error('Report content not found');
+        return;
+    }
+    
+    // Show loading state
+    const originalHTML = exportBtn.innerHTML;
+    exportBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Generating PDF...';
+    exportBtn.disabled = true;
+    
+    try {
+        // Configure html2canvas options for better quality
+        const canvas = await html2canvas(reportContent, {
+            scale: 2, // Higher quality
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: '#ffffff',
+            removeContainer: true,
+            imageTimeout: 0,
+            logging: false,
+            width: reportContent.scrollWidth,
+            height: reportContent.scrollHeight,
+            onclone: function(clonedDoc) {
+                // Ensure all styles are preserved in the clone
+                const clonedElement = clonedDoc.getElementById('reportContent');
+                if (clonedElement) {
+                    clonedElement.style.transform = 'none';
+                    clonedElement.style.animation = 'none';
+                    
+                    // Remove any hover effects and transitions for PDF
+                    const cards = clonedElement.querySelectorAll('.analytics-card');
+                    cards.forEach(card => {
+                        card.style.transform = 'none';
+                        card.style.transition = 'none';
+                        card.style.animation = 'none';
+                    });
+                }
+            }
+        });
+        
+        // Create PDF with jsPDF
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF({
+            orientation: 'portrait',
+            unit: 'mm',
+            format: 'a4',
+            compress: true
+        });
+        
+        // Calculate dimensions
+        const imgWidth = 210; // A4 width in mm
+        const pageHeight = 295; // A4 height in mm
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        let heightLeft = imgHeight;
+        let position = 0;
+        
+        // Add title page
+        pdf.setFontSize(20);
+        pdf.setTextColor(88, 28, 135); // Purple color
+        pdf.text('Analytics & Insights Report', 20, 30);
+        
+        pdf.setFontSize(12);
+        pdf.setTextColor(107, 114, 128); // Gray color
+        const currentDate = new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+        pdf.text(`Generated on: ${currentDate}`, 20, 45);
+        
+        // Add a separator line
+        pdf.setDrawColor(209, 213, 219);
+        pdf.line(20, 55, 190, 55);
+        
+        // Add the analytics content
+        const imgData = canvas.toDataURL('image/png', 0.8);
+        
+        // If content fits on one page
+        if (heightLeft < pageHeight - 70) {
+            pdf.addImage(imgData, 'PNG', 0, 70, imgWidth, imgHeight);
+        } else {
+            // Multi-page handling
+            pdf.addImage(imgData, 'PNG', 0, 70, imgWidth, imgHeight);
+            heightLeft -= (pageHeight - 70);
+            
+            while (heightLeft >= 0) {
+                position = heightLeft - imgHeight + 70;
+                pdf.addPage();
+                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+            }
+        }
+        
+        // Add footer to all pages
+        const pageCount = pdf.internal.getNumberOfPages();
+        for (let i = 1; i <= pageCount; i++) {
+            pdf.setPage(i);
+            pdf.setFontSize(8);
+            pdf.setTextColor(156, 163, 175);
+            pdf.text(`Page ${i} of ${pageCount}`, 20, 285);
+            pdf.text('Admin Dashboard - Analytics Report', 140, 285);
+        }
+        
+        // Generate filename with timestamp
+        const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-');
+        const filename = `Analytics_Report_${timestamp}.pdf`;
+        
+        // Save the PDF
+        pdf.save(filename);
+        
+        console.log('PDF exported successfully');
+        
+    } catch (error) {
+        console.error('Error generating PDF:', error);
+        alert('Error generating PDF. Please try again.');
+    } finally {
+        // Restore button state
+        exportBtn.innerHTML = originalHTML;
+        exportBtn.disabled = false;
+    }
+}
+
+// Optional: Add keyboard shortcut for PDF export (Ctrl+P or Cmd+P)
+document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && (e.key === 'p' || e.key === 'P')) {
+        e.preventDefault();
+        exportReportToPDF();
+    }
+});
+</script>
 
 <?php include 'includes/footer.php'; ?>

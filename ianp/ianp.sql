@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 02, 2025 at 07:52 AM
+-- Generation Time: Jul 09, 2025 at 03:52 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -60,11 +60,10 @@ CREATE TABLE `contact` (
 
 INSERT INTO `contact` (`id`, `name`, `email`, `message`, `created_at`) VALUES
 (1, 'IAN ', 'ian@ian.ian', 'fdsafsda', '2025-05-16 10:37:24'),
-(2, 'cristibne', 'fdsaf@fgasf.sadfasdf', 'sdafsdafsdfsdaf', '2025-05-16 10:39:22'),
-(3, 'IANIANIAN', 'ianp@gmail.com', 'hahaha', '2025-05-16 12:35:11'),
-(4, 'IANIANIAN', 'ianp@gmail.com', 'hahaha', '2025-05-16 12:36:07'),
 (5, 'cristibne', 'fdsfsd@sdfsadf.fsdafsdaf', 'fsadfsdfsdfsdf', '2025-05-16 13:14:23'),
-(6, 'IAN Purificacion', 'ian@gmail.com', 'fdsfsdafsdaf', '2025-05-16 14:40:49');
+(6, 'TEST', 'test@test.com', 'hahaha', '2025-05-16 14:40:49'),
+(7, 'Joy', 'loidapurificacion@gmail.com', 'hahahaherhre', '2025-07-02 06:42:02'),
+(8, 'Boy', 'velena@gmail.com', 'hahaha', '2025-07-02 15:08:54');
 
 -- --------------------------------------------------------
 
@@ -87,6 +86,28 @@ CREATE TABLE `inquire` (
   `status` varchar(20) NOT NULL DEFAULT 'pending',
   `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `inquire`
+--
+
+INSERT INTO `inquire` (`id`, `fullname`, `email`, `phone`, `subject`, `message`, `category`, `preferred_contact`, `priority`, `image`, `created_at`, `status`, `updated_at`) VALUES
+(25, 'Ian Purificacion', 'purificacionian@gmail.com', '', 'HACKING', 'fasd', '', 'email', 'low', 'inquiry_1751437776_6864d1d00e59b.jpg', '2025-06-22 06:29:36', 'completed', '2025-06-22 14:39:35'),
+(26, 'Joy Boy', 'loidapurificacionvelena@gmail.com', '+639916925190', 'HACKING', 'asdf', 'devops', 'email', 'high', 'inquiry_1751466285_6865412d8e0fb.png', '2025-06-28 14:24:45', 'pending', '2025-06-28 14:24:45'),
+(27, 'Joy Boy', 'loidapurificacionvelena@gmail.com', '+639916925190', 'HACKING', 'asdf', 'qa', 'email', 'high', 'inquiry_1751466300_6865413cd32fb.png', '2025-06-22 14:25:00', 'pending', '2025-06-22 14:25:00'),
+(28, 'Joy Boy', 'loidapurificacionvelena@gmail.com', '+639916925190', 'HACKING', 'asdf', 'devops', 'email', 'urgent', 'inquiry_1751466315_6865414bb73ce.jpg', '2025-06-15 14:25:15', 'pending', '2025-06-15 14:25:15'),
+(29, 'Loida Purificacion', 'purificacionvelena@gmail.com', '+639916925190', 'HACKING NASA', 'asdf', 'qa', 'phone', 'high', 'inquiry_1751466337_68654161e7b33.png', '2025-06-28 14:25:37', 'pending', '2025-06-28 14:25:37'),
+(30, 'Loida Purificacion', 'purificacionvelena@gmail.com', '+639916925190', 'Dog food', 'asdf', 'devops', 'email', 'medium', 'inquiry_1751466356_686541746b9da.jpg', '2025-06-28 14:25:56', 'pending', '2025-06-28 14:25:56'),
+(31, 'Ian Purificacion', 'ian@example.com', '+639916925190', 'Dog food', 'asdf', 'devops', 'email', 'urgent', 'inquiry_1751466376_6865418804ff7.png', '2025-06-22 14:26:16', 'pending', '2025-06-22 14:26:16'),
+(32, 'Loida Purificacion', 'loidapurificacionvelena@gmail.com', '09916925190', 'HACKING', 'asdf', 'devops', 'email', 'high', NULL, '2025-06-28 15:06:58', 'pending', '2025-06-28 15:06:58'),
+(33, 'IAN PURIFICACION', 'ian@test.com', '', 'Dog food', 'please', 'support', 'email', 'urgent', 'inquiry_1751470751_6865529f1f594.jpg', '2025-06-28 15:39:11', 'pending', '2025-06-28 15:39:11'),
+(34, 'IAN PURIFICACION', 'ian@test.com', '09916925190', 'Dog food', 'please', 'support', 'email', 'low', 'inquiry_1751470794_686552ca7f993.jpg', '2025-06-28 15:39:54', 'pending', '2025-06-28 15:43:27'),
+(35, 'IAN PURIFICACION', 'ian@test.com', '+639916925190', 'Dog food', 'please', 'support', 'email', 'urgent', 'inquiry_1751470834_686552f2068b6.jpg', '2025-06-28 15:40:34', 'pending', '2025-06-28 15:40:34'),
+(36, 'IAN PURIFICACION', 'ian@test.com', '+639916925190', 'Dog food', 'please', 'support', 'email', 'urgent', 'inquiry_1751470867_68655313773c2.jpg', '2025-06-24 15:41:07', 'pending', '2025-06-24 15:41:07'),
+(37, 'IAN PURIFICACION', 'ian@test.com', '', 'Dog food', 'please', 'support', 'email', 'high', 'inquiry_1751470896_6865533008592.jpg', '2025-07-02 15:41:36', 'pending', '2025-07-02 15:41:36'),
+(38, 'Loida Purificacion', 'loidapurificacionvelena@gmail.com', '+639916925190', 'HACKING', 'sadf', 'qa', 'email', 'urgent', 'inquiry_1752025813_686dcad5cdb70.jpg', '2025-07-09 01:50:13', 'pending', '2025-07-09 01:50:13'),
+(39, 'Loida Purificacion', 'loidapurificacionvelena@gmail.com', '+639916925190', 'Dog food', 'sdf', 'devops', 'email', 'medium', 'inquiry_1752025834_686dcaea4f054.jpg', '2025-07-09 01:50:34', 'pending', '2025-07-09 01:50:34'),
+(40, 'Loida Purificacion', 'loidapurificacionvelena@gmail.com', '+639916925190', 'Dog food', 'sdfasdff', 'devops', 'email', 'low', 'inquiry_1752025854_686dcafe02774.jpg', '2025-07-09 01:50:54', 'pending', '2025-07-09 01:50:54');
 
 -- --------------------------------------------------------
 
@@ -164,13 +185,13 @@ ALTER TABLE `admin_users`
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `inquire`
 --
 ALTER TABLE `inquire`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `users`

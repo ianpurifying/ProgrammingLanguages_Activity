@@ -171,4 +171,12 @@ include '../includes/navbar.php';
     </div>
 </div>
 
+<script>
+function confirmDelete(id, type) {
+    if (confirm('Are you sure you want to delete this inquiry?')) {
+        window.location.href = `delete.php?id=${id}`;
+    }
+}
+</script>
+
 <?php include '../includes/footer.php'; ?>
