@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2025 at 03:52 AM
+-- Generation Time: Jul 29, 2025 at 07:02 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -61,9 +61,13 @@ CREATE TABLE `contact` (
 INSERT INTO `contact` (`id`, `name`, `email`, `message`, `created_at`) VALUES
 (1, 'IAN ', 'ian@ian.ian', 'fdsafsda', '2025-05-16 10:37:24'),
 (5, 'cristibne', 'fdsfsd@sdfsadf.fsdafsdaf', 'fsadfsdfsdfsdf', '2025-05-16 13:14:23'),
-(6, 'TEST', 'test@test.com', 'hahaha', '2025-05-16 14:40:49'),
-(7, 'Joy', 'loidapurificacion@gmail.com', 'hahahaherhre', '2025-07-02 06:42:02'),
-(8, 'Boy', 'velena@gmail.com', 'hahaha', '2025-07-02 15:08:54');
+(9, 'Loida Purificacion', 'loidapurificacionvelena@gmail.com', 'asdf', '2025-07-25 11:24:18'),
+(10, 'IAN PURIFICACION', 'purificacionvelena@gmail.com', 'asdf', '2025-07-25 11:24:28'),
+(11, 'Joy Boy', 'loida@gmail.com', 'adsf', '2025-07-25 11:24:40'),
+(12, 'Loida Purificacion', 'loidapurificacionvelena@gmail.com', 'asdf', '2025-07-25 11:24:45'),
+(13, 'IAN PURIFI', 'rificacionvelena@gmail.com', 'asdff', '2025-07-25 11:24:58'),
+(14, 'Loida Purificacion', 'loidapurificacio@gmail.com', 'asdf', '2025-07-25 11:25:07'),
+(17, 'Joy Boy', 'loidapurificacionvelena@gmail.com', 'asdf', '2025-07-25 12:55:56');
 
 -- --------------------------------------------------------
 
@@ -102,12 +106,13 @@ INSERT INTO `inquire` (`id`, `fullname`, `email`, `phone`, `subject`, `message`,
 (32, 'Loida Purificacion', 'loidapurificacionvelena@gmail.com', '09916925190', 'HACKING', 'asdf', 'devops', 'email', 'high', NULL, '2025-06-28 15:06:58', 'pending', '2025-06-28 15:06:58'),
 (33, 'IAN PURIFICACION', 'ian@test.com', '', 'Dog food', 'please', 'support', 'email', 'urgent', 'inquiry_1751470751_6865529f1f594.jpg', '2025-06-28 15:39:11', 'pending', '2025-06-28 15:39:11'),
 (34, 'IAN PURIFICACION', 'ian@test.com', '09916925190', 'Dog food', 'please', 'support', 'email', 'low', 'inquiry_1751470794_686552ca7f993.jpg', '2025-06-28 15:39:54', 'pending', '2025-06-28 15:43:27'),
-(35, 'IAN PURIFICACION', 'ian@test.com', '+639916925190', 'Dog food', 'please', 'support', 'email', 'urgent', 'inquiry_1751470834_686552f2068b6.jpg', '2025-06-28 15:40:34', 'pending', '2025-06-28 15:40:34'),
-(36, 'IAN PURIFICACION', 'ian@test.com', '+639916925190', 'Dog food', 'please', 'support', 'email', 'urgent', 'inquiry_1751470867_68655313773c2.jpg', '2025-06-24 15:41:07', 'pending', '2025-06-24 15:41:07'),
-(37, 'IAN PURIFICACION', 'ian@test.com', '', 'Dog food', 'please', 'support', 'email', 'high', 'inquiry_1751470896_6865533008592.jpg', '2025-07-02 15:41:36', 'pending', '2025-07-02 15:41:36'),
 (38, 'Loida Purificacion', 'loidapurificacionvelena@gmail.com', '+639916925190', 'HACKING', 'sadf', 'qa', 'email', 'urgent', 'inquiry_1752025813_686dcad5cdb70.jpg', '2025-07-09 01:50:13', 'pending', '2025-07-09 01:50:13'),
 (39, 'Loida Purificacion', 'loidapurificacionvelena@gmail.com', '+639916925190', 'Dog food', 'sdf', 'devops', 'email', 'medium', 'inquiry_1752025834_686dcaea4f054.jpg', '2025-07-09 01:50:34', 'pending', '2025-07-09 01:50:34'),
-(40, 'Loida Purificacion', 'loidapurificacionvelena@gmail.com', '+639916925190', 'Dog food', 'sdfasdff', 'devops', 'email', 'low', 'inquiry_1752025854_686dcafe02774.jpg', '2025-07-09 01:50:54', 'pending', '2025-07-09 01:50:54');
+(40, 'Loida Purificacion', 'loidapurificacionvelena@gmail.com', '+639916925190', 'Dog food', 'sdfasdff', 'devops', 'email', 'low', 'inquiry_1752025854_686dcafe02774.jpg', '2025-07-09 01:50:54', 'pending', '2025-07-09 01:50:54'),
+(41, 'Loida Purificacion', 'loidapurificacionvelena@gmail.com', '+639916925190', 'Dog food', 'please faster', 'devops', 'email', 'urgent', 'inquiry_1753442601_68836929b3308.jpg', '2025-07-25 11:23:21', 'pending', '2025-07-25 11:23:21'),
+(42, 'Loida Purificacion', 'loidapurificacionvelena@gmail.com', '+639916925190', 'Dog food', 'asdf', 'development', 'phone', 'high', 'inquiry_1753442793_688369e9d3e33.jpg', '2025-07-25 11:26:33', 'pending', '2025-07-25 11:26:33'),
+(43, 'Loida Purificacion', 'loidapurificacionvelena@gmail.com', '+639916925190', 'Dog food', 'asdf', 'devops', 'phone', 'urgent', 'inquiry_1753442817_68836a01cfc83.jpg', '2025-07-25 11:26:57', 'pending', '2025-07-25 11:26:57'),
+(48, 'Loidaloids', 'loidapurificacionvelena@gmail.com', '09916921234', 'asdf', 'asdfasdfasdf', 'support', 'phone', 'high', 'inquiry_1753778802_68888a72c20cc.jpg', '2025-07-29 08:46:42', 'completed', '2025-07-29 08:47:40');
 
 -- --------------------------------------------------------
 
@@ -185,13 +190,13 @@ ALTER TABLE `admin_users`
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `inquire`
 --
 ALTER TABLE `inquire`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `users`

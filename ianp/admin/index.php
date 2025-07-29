@@ -349,7 +349,7 @@ async function exportReportToPDF() {
             pdf.setFontSize(8);
             pdf.setTextColor(156, 163, 175);
             pdf.text(`Page ${i} of ${pageCount}`, 20, 285);
-            pdf.text('Admin Dashboard - Analytics Report', 140, 285);
+            pdf.text('IANP SaaS - Analytics Report', 140, 285);
         }
         
         // Generate filename with timestamp
